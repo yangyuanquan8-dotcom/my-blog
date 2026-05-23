@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagBadge from '../../components/TagBadge.astro';
+import GiscusComments from '../../components/GiscusComments.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+const posts = await getCollection('blog');
+const post = posts.find(p => p.slug === slug);
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await post.render();
+const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+---
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="prose-custom">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-3 font-[system-ui]">{post.data.title}</h1>
+      <time class="text-sm text-[var(--color-text-secondary)]">{formattedDate}</time>
+      {
+        post.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-3">
+            {post.data.tags.map(tag => <TagBadge {tag} />)}
+          </div>
+        )
+      }
+    </header>
+    <Content />
+  </article>
+  <GiscusComments />
+</BaseLayout>

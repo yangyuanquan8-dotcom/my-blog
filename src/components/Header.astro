@@ -1,0 +1,19 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+<header class="sticky top-0 z-10 bg-[var(--color-bg)]/80 backdrop-blur border-b border-[var(--color-border)]">
+  <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="text-xl font-bold text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors no-underline font-[system-ui]">
+      Blog
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="/about" class="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors no-underline font-[system-ui]">
+        About
+      </a>
+      <a href="/rss.xml" class="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors no-underline" title="RSS Feed">
+        RSS
+      </a>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

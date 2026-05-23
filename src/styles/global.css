@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-text: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-card: #ffffff;
+  --color-card-hover: #f1f5f9;
+  --color-code-bg: #f1f5f9;
+}
+
+html.dark {
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-text: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-border: #334155;
+  --color-accent: #60a5fa;
+  --color-accent-hover: #93bbfd;
+  --color-card: #1e293b;
+  --color-card-hover: #334155;
+  --color-code-bg: #1e293b;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+
+  html.dark body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+
+  article h1, article h2, article h3, article h4 {
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  article p {
+    line-height: 1.85;
+    margin-bottom: 1.25em;
+  }
+
+  article a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  article a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  article pre {
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    background-color: var(--color-code-bg) !important;
+  }
+
+  article code {
+    font-size: 0.9em;
+  }
+
+  article :not(pre) > code {
+    background-color: var(--color-code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+  }
+
+  article blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  article ul, article ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25em;
+  }
+
+  article li {
+    margin-bottom: 0.4em;
+    line-height: 1.75;
+  }
+}
