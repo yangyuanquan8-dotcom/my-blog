@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
+  site: 'https://yangyuanquan8-dotcom.github.io',
+  base: '/my-blog',
   integrations: [tailwind()],
   markdown: {
     shikiConfig: {
